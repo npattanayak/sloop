@@ -11,8 +11,6 @@ import (
 	"context"
 	"expvar"
 	"fmt"
-	"github.com/salesforce/sloop/pkg/sloop/common"
-	"github.com/spf13/afero"
 	"log"
 	"mime"
 	"net/http"
@@ -24,6 +22,9 @@ import (
 	"strings"
 	"syscall"
 	"time"
+
+	"github.com/salesforce/sloop/pkg/sloop/common"
+	"github.com/spf13/afero"
 
 	"github.com/salesforce/sloop/pkg/sloop/queries"
 	"github.com/salesforce/sloop/pkg/sloop/store/typed"
