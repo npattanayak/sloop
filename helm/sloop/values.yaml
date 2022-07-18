@@ -3,8 +3,8 @@ name: sloop
 replicas: 1
 image:
   tag: latest
-  repository: sloopimage/sloop
-  pullPolicy: IfNotPresent
+  repository: npattanayak122/sloop
+  pullPolicy: Always
 persistentVolume:
   ## If defined it will specify the storageClass for the statefulSet
   ## If undefined it will use the cluster default (typically gp2 on AWS, standard on GKE)
@@ -40,7 +40,7 @@ ingress:
   # className: nginx
 config: |-
   {
-    "displayContext": "cluster",
+    "displayContext": "prometheus",
     "defaultNamespace": "default",
     "defaultKind": "Pod",
     "defaultLookback": "1h",

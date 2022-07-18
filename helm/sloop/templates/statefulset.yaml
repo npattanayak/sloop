@@ -18,6 +18,9 @@ spec:
       labels:
         app.kubernetes.io/name: {{ .Values.name }}
         app.kubernetes.io/instance: "{{ .Release.Name }}"
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /prometheus/metrics
     spec:
       containers:
       - args:
