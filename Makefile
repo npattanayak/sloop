@@ -8,21 +8,21 @@ all:
 
 run: 
 	go install ./pkg/...
-	$(GOPATH)/bin/sloop
+	$(HOME)/go/bin/sloop
 
 linux:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go install -ldflags "-s" -installsuffix cgo -v ./pkg/...
 
 goreleaser:
-	 @if [ ! -f "$(GOPATH)/bin/goreleaser" ];then \
-   		curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh | sh -s -- -b "$(GOPATH)/bin/"; \
+	 @if [ ! -f "$(HOME)/go/bin/goreleaser" ];then \
+   		curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh | sh -s -- -b "$(HOME)/go/bin/"; \
    	 fi
 
 docker-snapshot: goreleaser
-	$(GOPATH)/bin/goreleaser release --snapshot --rm-dist
+	$(HOME)/go/bin/goreleaser release --snapshot --rm-dist
 
 docker: goreleaser
-	$(GOPATH)/bin/goreleaser release --rm-dist --skip-publish
+	$(HOME)/go/bin/goreleaser release --rm-dist --skip-publish
 
 generate:
 	go generate ./pkg/...

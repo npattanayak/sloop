@@ -12,6 +12,7 @@ import (
 	"k8s.io/client-go/kubernetes"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/azure"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/tools/clientcmd/api"
 )
@@ -44,7 +45,8 @@ func MakeKubernetesClient(masterURL string, kubeContext string) (kubernetes.Inte
 
 	clientConfig := getConfig(masterURL, kubeContext)
 
-	config, err := clientConfig.ClientConfig()
+	config, err := rest.InClusterConfig()
+	//config, err := clientConfig.ClientConfig()
 	if err != nil {
 		return nil, err
 	}
